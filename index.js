@@ -8,4 +8,19 @@
 //   - What optional parameters do we want to add?
 // - What HTTP method are we using?
 
-console.log("Hello World");
+let countryName = "malaysia";
+
+let url = `https://restcountries.eu/rest/v2/name/${countryName}`;
+
+function waitForData(res) {
+  return res.json();
+}
+
+function handleData(data) {
+  //stop running js and give access to scope, we can play around with data
+  //   debugger;
+  let pop = data[0].population;
+  console.log(pop);
+}
+
+fetch(url, { method: "GET" }).then(waitForData).then(handleData);
